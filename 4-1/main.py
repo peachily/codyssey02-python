@@ -1,0 +1,1 @@
+file = open('mission_computer_main.log', 'r', encoding = 'utf-8')
