@@ -1,22 +1,36 @@
-2025-09-18 14:02:01, Sensor init complete - all channels nominal
-2025-09-18 14:05:12, CO2 sensor calibration passed
-2025-09-18 14:15:20, Oxygen level: 20.9% - nominal
-2025-09-18 14:30:05, External temp: -55.2 C, Internal temp: 19.8 C
-2025-09-18 14:45:33, Pressure valve A opened
-2025-09-18 15:03:51, Warning: Temperature rising - sensor T4 reports 27.4 C
-2025-09-18 15:04:12, Info: Cooling pump cycle start
-2025-09-18 15:05:02, Alert: High temperature detected in sector 3
-2025-09-18 15:06:40, Info: Redundant fan engaged
-2025-09-18 15:08:22, Error: Sensor T4 read timeout
-2025-09-18 15:09:00, Oxygen level: 18.5% - decreasing
-2025-09-18 15:09:12, Critical: Possible oxygen leak detected near junction B3
-2025-09-18 15:09:45, Emergency: Sealant failure on conduit B3
-2025-09-18 15:10:10, INFO, malformed line without comma separator
-2025-09-18 15:10:33, Action: Isolate sector 3 valves
-2025-09-18 15:11:01, Explosion risk: Pressure spike 4.8 bar at conduit B3
-2025-09-18 15:11:45, Evacuation advised to safe zone Alpha
-2025-09-18 15:12:12, Log note: Manual override by operator ID 17
-2025-09-18 15:12:55, Resolution: Leak mitigated, oxygen level stabilizing at 19.6%
-2025-09-18 15:30:00, Post-event: System diagnostics running - all checks pending
-2025-09-18 15:35:10, Radiation monitor nominal
-2025-09-18 15:45:00, Archive: Event summary saved to event_20250918_1512.txt
+timestamp,event,message
+2023-08-27 10:00:00,INFO,Rocket initialization process started.
+2023-08-27 10:02:00,INFO,Power systems online. Batteries at optimal charge.
+2023-08-27 10:05:00,INFO,Communication established with mission control.
+2023-08-27 10:08:00,INFO,Pre-launch checklist initiated.
+2023-08-27 10:10:00,INFO,Avionics check: All systems functional.
+2023-08-27 10:12:00,INFO,Propulsion check: Thrusters responding as expected.
+2023-08-27 10:15:00,INFO,Life support systems nominal.
+2023-08-27 10:18:00,INFO,Cargo bay secured and sealed properly.
+2023-08-27 10:20:00,INFO,Final system checks complete. Rocket is ready for launch.
+2023-08-27 10:23:00,INFO,Countdown sequence initiated.
+2023-08-27 10:25:00,INFO,Engine ignition sequence started.
+2023-08-27 10:27:00,INFO,Engines at maximum thrust. Liftoff imminent.
+2023-08-27 10:30:00,INFO,Liftoff! Rocket has left the launchpad.
+2023-08-27 10:32:00,INFO,Initial telemetry received. Rocket is on its trajectory.
+2023-08-27 10:35:00,INFO,Approaching max-Q. Aerodynamic pressure increasing.
+2023-08-27 10:37:00,INFO,Max-Q passed. Vehicle is stable.
+2023-08-27 10:40:00,INFO,First stage engines throttled down as planned.
+2023-08-27 10:42:00,INFO,Main engine cutoff confirmed. Stage separation initiated.
+2023-08-27 10:45:00,INFO,Second stage ignition. Rocket continues its ascent.
+2023-08-27 10:48:00,INFO,Payload fairing jettisoned. Satellite now exposed.
+2023-08-27 10:50:00,INFO,Orbital insertion calculations initiated.
+2023-08-27 10:52:00,INFO,Navigation systems show nominal performance.
+2023-08-27 10:55:00,INFO,Second stage burn nominal. Rocket velocity increasing.
+2023-08-27 10:57:00,INFO,Entering planned orbit around Earth.
+2023-08-27 11:00:00,INFO,Orbital operations initiated. Satellite deployment upcoming.
+2023-08-27 11:05:00,INFO,Satellite deployment successful. Mission objectives achieved.
+2023-08-27 11:10:00,INFO,Initiating deorbit maneuvers for rocket's reentry.
+2023-08-27 11:15:00,INFO,Reentry sequence started. Atmospheric drag noticeable.
+2023-08-27 11:20:00,INFO,Heat shield performing as expected during reentry.
+2023-08-27 11:25:00,INFO,Main parachutes deployed. Rocket descent rate reducing.
+2023-08-27 11:28:00,INFO,Touchdown confirmed. Rocket safely landed.
+2023-08-27 11:30:00,INFO,Mission completed successfully. Recovery team dispatched.
+2023-08-27 11:35:00,INFO,Oxygen tank unstable.
+2023-08-27 11:40:00,INFO,Oxygen tank explosion.
+2023-08-27 12:00:00,INFO,Center and mission control systems powered down.
