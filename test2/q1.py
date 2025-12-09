@@ -83,7 +83,6 @@ class CircularList:
 
         while True:
             if cur.value == value:
-                # 삭제 시 한 개 노드뿐이면 빈 상태
                 if cur is prev and cur is self.cursor:
                     self.cursor = None
                 else:
@@ -120,8 +119,6 @@ class CircularList:
 
 
 def main():
-    # 아래는 샘플 데모 (자동채점과 무관 / 자유)
-    # ▶ Singly Linked List
     lst = LinkedList()
     lst.insert(0, 'A')
     lst.insert(1, 'B')
@@ -132,7 +129,6 @@ def main():
     print(lst.to_list())
     print(len(lst))
 
-    # ▶ Circular Linked List
     cl = CircularList()
     print(cl.get_next())
     for v in ['A', 'B', 'C']:

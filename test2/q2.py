@@ -28,7 +28,6 @@ class stack:
 
 
 def main():
-    # 채점 시스템이 main을 호출할 수도 있어 기본 구조만 둠
     s = stack()
     pass
 
