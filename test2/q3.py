@@ -1,71 +1,74 @@
 import pandas as pd
 
-def load_attributes(path='a.txt'):
+ATTR_FILE = 'abalone_attributes.txt'
+DATA_FILE = 'abalone.txt'
+
+
+def load_attributes(path):
     try:
         with open(path, 'r', encoding='utf-8') as f:
-            return [line.strip() for line in f]
+            attributes = [line.strip() for line in f.readlines()]
+        return attributes
     except FileNotFoundError:
-        print("File open error: a.txt")
-        return None
+        raise FileNotFoundError('File open error.')
     except UnicodeDecodeError:
-        print("Decoding error in a.txt")
-        return None
-    except Exception:
-        print("Unknown error in a.txt")
-        return None
+        raise UnicodeDecodeError('Decoding error.')
 
-
-def load_data(cols, path='b.txt'):
+def load_data(path, columns):
     try:
-        df = pd.read_csv(path, header=None)
-        df.columns = cols
+        df = pd.read_csv(path, header=None, names=columns)
         return df
     except FileNotFoundError:
-        print("File open error: b.txt")
-        return None
-    except UnicodeDecodeError:
-        print("Decoding error in b.txt")
-        return None
-    except Exception:
-        print("Unknown error in b.txt")
-        return None
+        raise FileNotFoundError('File open error.')
+    except Exception as e:
+        raise ValueError(f'Processing error: {e}')
 
 
-def make_label(df):
-    df["label"] = df["sex"]
-    df = df.drop(columns=["sex"])
+def minmax_manual_scale(df):
+    # scaled_df = df.copy()
+    numeric_cols = df.select_dtypes(include='number').columns
+
+    for col in numeric_cols:
+        min_val = df[col].min()
+        max_val = df[col].max()
+        range_val = max_val - min_val
+
+        if range_val == 0:
+            df[col] = 0.0
+        else:
+            df[col] = (df[col] - min_val) / range_val
+            
     return df
 
-
-def minmax_manual(df):
-    numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns
-    scaled = df.copy()
-    for col in numeric_cols:
-        minimum = df[col].min()
-        maximum = df[col].max()
-        if maximum - minimum == 0:
-            scaled[col] = 0.0
-        else:
-            scaled[col] = (df[col] - minimum) / (maximum - minimum)
-    return scaled
-
-
 def main():
-    attrs = load_attributes()
-    if attrs is None:
+    try:
+        # 1. 데이터 적재
+        columns = load_attributes(ATTR_FILE)
+        df = load_data(DATA_FILE, columns)
+        
+        # 요구사항 1: 원본 DataFrame 모양 출력
+        print(df.shape)
+
+        # 2. 라벨 분리
+        df['label'] = df['Sex']
+        df = df.drop(columns=['Sex'])
+
+        # 요구사항 2: 라벨 분포 출력
+        print(df['label'].value_counts().to_dict())
+
+        # 3. Min-Max 스케일링
+        data_to_scale = df.drop(columns=['label'])
+        scaled_data = minmax_manual_scale(data_to_scale)
+        
+        # 요구사항 3: 스케일 결과의 상/하한 요약 출력
+        print(scaled_data.describe().loc[['min', 'max']].round(6).to_dict())
+
+    except (FileNotFoundError, UnicodeDecodeError) as e:
+        print(e.args[0])
         return
-
-    df = load_data(attrs)
-    if df is None:
+    except (ValueError, Exception):
+        print(f"Processing error.")
         return
-
-    df = make_label(df)
-    print(df.shape)
-    print(df['label'].value_counts().to_dict())
-
-    scaled = minmax_manual(df)
-    print(scaled.describe().loc[['min', 'max']].round(6).to_dict())
-
 
 if __name__ == "__main__":
     main()
