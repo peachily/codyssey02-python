@@ -11,8 +11,8 @@ def load_attributes(path):
         return attributes
     except FileNotFoundError:
         raise FileNotFoundError('File open error.')
-    except UnicodeDecodeError:
-        raise UnicodeDecodeError('Decoding error.')
+    except UnicodeError:
+        raise UnicodeError('Decoding error.')
 
 def load_data(path, columns):
     try:
@@ -40,35 +40,5 @@ def minmax_manual_scale(df):
             
     return df
 
-def main():
-    try:
-        # 1. 데이터 적재
-        columns = load_attributes(ATTR_FILE)
-        df = load_data(DATA_FILE, columns)
-        
-        # 요구사항 1: 원본 DataFrame 모양 출력
-        print(df.shape)
-
-        # 2. 라벨 분리
-        df['label'] = df['Sex']
-        df = df.drop(columns=['Sex'])
-
-        # 요구사항 2: 라벨 분포 출력
-        print(df['label'].value_counts().to_dict())
-
-        # 3. Min-Max 스케일링
-        data_to_scale = df.drop(columns=['label'])
-        scaled_data = minmax_manual_scale(data_to_scale)
-        
-        # 요구사항 3: 스케일 결과의 상/하한 요약 출력
-        print(scaled_data.describe().loc[['min', 'max']].round(6).to_dict())
-
-    except (FileNotFoundError, UnicodeDecodeError) as e:
-        print(e.args[0])
-        return
-    except (ValueError, Exception):
-        print(f"Processing error.")
-        return
-
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+# 문제
