@@ -133,4 +133,65 @@ class CircularList:
 
 
 # if __name__ == "__main__":
-# 문제
+
+#     try:
+#         input_data = input().strip()
+#     except EOFError:
+#         input_data = '1'
+
+#     if input_data == '1':
+#         # LinkedList 테스트 (기존 + 추가)
+#         ll = LinkedList()
+
+#         # 기본 테스트
+#         ll.insert(0, 'a')
+#         ll.insert(1, 'b')
+#         ll.insert(1, 'X')
+#         print(ll.to_list())  # 예상: ['a', 'X', 'b']
+#         print(len(ll))  # 예상: 3
+#         print(ll.delete(1))  # 예상: X
+#         print(ll.to_list())  # 예상: ['a', 'b']
+#         print(len(ll))  # 예상: 2
+
+#         # 추가 테스트 (2배 확장)
+#         ll.insert(0, 'Z')  # 맨 앞 삽입
+#         print(ll.to_list())  # 예상: ['Z', 'a', 'b']
+#         ll.insert(3, 'Y')  # 맨 뒤 삽입
+#         print(ll.to_list())  # 예상: ['Z', 'a', 'b', 'Y']
+#         print(len(ll))  # 예상: 4
+#         print(ll.delete(0))  # 예상: Z (맨 앞 삭제)
+#         print(ll.delete(2))  # 예상: Y (맨 뒤 삭제)
+#         print(ll.to_list())  # 예상: ['a', 'b']
+#         print(ll.delete(0))
+#         print(ll.delete(0))
+#         print(ll.to_list(), len(ll))
+#         print(ll.delete(0))
+
+#     else:
+#         # CircularList 테스트 (기존 + 추가)
+#         cl = CircularList()
+
+#         # 기본 테스트
+#         print(cl.get_next())  # 예상: None
+#         cl.insert('A')
+#         cl.insert('B')
+#         cl.insert('C')
+#         print(len(cl))  # 예상: 3
+#         print(cl.get_next())  # 예상: A
+#         print(cl.get_next())  # 예상: B
+#         print(cl.search('B'))  # 예상: True
+#         print(cl.search(999))  # 예상: False
+#         print(cl.delete('A'))  # 예상: True
+#         print(cl.delete(2))  # 예상: False
+#         print(len(cl))  # 예상: 2
+#         print([cl.get_next() for _ in range(4)])  # 예상: ['C', 'B', 'C', 'B']
+#         print(cl.delete(42))  # 예상: False
+
+#         # 추가 테스트 (2배 확장)
+#         cl.insert('D')  # 추가 삽입
+#         print(len(cl))  # 예상: 3
+#         print(cl.search('D'))  # 예상: True
+#         print(cl.get_next())  # 예상: B (순환 계속)
+#         print(cl.delete('C'))  # 예상: True
+#         print(len(cl))  # 예상: 2
+#         print([cl.get_next() for _ in range(4)])  # 예상: ['D', 'B', 'D', 'B']
